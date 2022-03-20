@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface RickAndMortyAPI {
 
-    @GET("/character")
+    @GET("character/")
     suspend fun getCharacters(
         @Query("name") nameQuery: String = "",
         @Query("status") status: String = "",   //empty means all status: dead, alive and unknown

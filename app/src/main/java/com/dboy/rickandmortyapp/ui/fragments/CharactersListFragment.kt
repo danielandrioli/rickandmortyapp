@@ -4,13 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dboy.rickandmortyapp.databinding.FragmentCharactersListBinding
+import com.dboy.rickandmortyapp.ui.RmViewModel
+import com.dboy.rickandmortyapp.ui.adapters.CharacterAdapterPagination
+import com.dboy.rickandmortyapp.ui.adapters.CharacterLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharactersListFragment: Fragment() {
+class CharactersListFragment : Fragment() {
     private var binding: FragmentCharactersListBinding? = null
+    private lateinit var characterAdapter: CharacterAdapterPagination
+    private val rmViewModel: RmViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +31,35 @@ class CharactersListFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        setRecyclerAndAdapter()
+        rmViewModel.charactersWithPagination.observe(viewLifecycleOwner) {
+            characterAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+
+    }
+
+    private fun setRecyclerAndAdapter() {
+        characterAdapter = CharacterAdapterPagination()
+        binding?.rvCharacterList?.apply {
+            adapter = characterAdapter.withLoadStateFooter(CharacterLoadStateAdapter {
+                characterAdapter.retry()
+            })
+            layoutManager = LinearLayoutManager(requireContext())
+            itemAnimator = null
+        }
+
+        characterAdapter.addLoadStateListener {
+            binding?.apply {
+                val loadState = it.source.refresh
+                pgCharacters.isVisible = loadState is LoadState.Loading
+                btnRetry.isVisible = loadState is LoadState.Error
+                tvError.isVisible = loadState is LoadState.Error
+            }
+        }
+
+        binding?.btnRetry?.setOnClickListener {
+            characterAdapter.retry()
+        }
     }
 
     override fun onDestroyView() {

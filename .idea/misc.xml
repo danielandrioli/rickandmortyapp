@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/character_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/character_load_state_footer.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_character.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_characters.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_characters_list.xml" value="0.19375" />

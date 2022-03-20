@@ -15,15 +15,6 @@
             app:destination="@id/characterFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.dboy.rickandmortyapp.ui.fragments.FavoritesFragment"
-        android:label="Favorites"
-        tools:layout="@layout/fragment_favorites">
-        <action
-            android:id="@+id/action_favoritesFragment_to_characterFragment"
-            app:destination="@id/characterFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/characterFragment"
         android:name="com.dboy.rickandmortyapp.ui.fragments.CharacterFragment"
         android:label="fragment_character"

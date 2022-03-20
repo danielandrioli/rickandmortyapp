@@ -78,26 +78,25 @@
             tools:text="Earth" />
 
         <TextView
-            android:id="@+id/tvTitleFirstSeen"
+            android:id="@+id/tvTitleOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/itens_margin"
-            android:text="First seen:"
+            android:text="Origin:"
             app:layout_constraintStart_toEndOf="@+id/ivCharacter"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleLastLocation" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tvOrigin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/itens_margin"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvTitleFirstSeen"
+            app:layout_constraintStart_toEndOf="@+id/tvTitleOrigin"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleLastLocation"
-            tools:text="Episode 01" />
+            tools:text="Brazil" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

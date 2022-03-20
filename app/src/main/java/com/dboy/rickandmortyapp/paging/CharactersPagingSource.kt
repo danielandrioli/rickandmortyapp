@@ -36,7 +36,7 @@ class CharactersPagingSource(
                     nextKey = nextPageNumber
                 )
             } else {
-                Log.i("BreakingNewsPaging", "Erro: $response")
+                Log.i("CharactersPaging", "Erro: $response")
                 throw Exception(response.code().toString())
             }
         } catch (exception: IOException) {
@@ -44,6 +44,7 @@ class CharactersPagingSource(
         } catch (exception: HttpException) {
             LoadResult.Error(exception)
         } catch (exception: Exception) {
+            Log.i("CharactersPaging", "Erro geral: $exception")
             if (exception is CancellationException) throw exception
             LoadResult.Error(exception)
         }
