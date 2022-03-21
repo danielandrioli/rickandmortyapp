@@ -12,6 +12,12 @@ import com.dboy.rickandmortyapp.databinding.CharacterItemBinding
 class CharacterAdapterPagination:PagingDataAdapter<Character, CharacterAdapterPagination.RmViewHolder>(
     differCallback) {
 
+    private var onItemClickListener: ((character: Character) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (character: Character) -> Unit){
+        onItemClickListener = listener
+    }
+
     inner class RmViewHolder(private val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bind(character: Character){
@@ -22,6 +28,12 @@ class CharacterAdapterPagination:PagingDataAdapter<Character, CharacterAdapterPa
                 tvType.text = character.species
                 tvLastLocation.text = character.location.name
                 tvOrigin.text = character.origin.name
+            }
+
+            itemView.setOnClickListener {
+                onItemClickListener?.let {
+                    it(character)
+                }
             }
         }
     }

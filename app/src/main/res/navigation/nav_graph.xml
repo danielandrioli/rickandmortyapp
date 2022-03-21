@@ -18,7 +18,11 @@
         android:id="@+id/characterFragment"
         android:name="com.dboy.rickandmortyapp.ui.fragments.CharacterFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/locationsListFragment"
         android:name="com.dboy.rickandmortyapp.ui.fragments.LocationsListFragment"

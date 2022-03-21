@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dboy.rickandmortyapp.databinding.FragmentCharactersListBinding
@@ -36,6 +37,10 @@ class CharactersListFragment : Fragment() {
             characterAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
+        characterAdapter.setOnItemClickListener {
+            val action = CharactersListFragmentDirections.actionCharactersListFragmentToCharacterFragment(it.id)
+            findNavController().navigate(action)
+        }
     }
 
     private fun setRecyclerAndAdapter() {
