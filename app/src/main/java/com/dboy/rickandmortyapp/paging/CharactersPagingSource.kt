@@ -14,13 +14,12 @@ import java.util.concurrent.CancellationException
 class CharactersPagingSource(
     private val rmApi: RickAndMortyAPI,
     private val nameQuery: String = "",
-    private val statusQuery: String = "",
 ) : PagingSource<Int, Character>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val page = params.key ?: CHARACTERS_STARTING_PAGE
 
         return try {
-            val response = rmApi.getCharacters(nameQuery = nameQuery, status = statusQuery, page = page)
+            val response = rmApi.getCharacters(nameQuery = nameQuery, page = page)
             val charactersResponse = response.body()
             if (response.isSuccessful && charactersResponse != null) {
                 Log.i("CharactersPaging", "successfull response: $response")

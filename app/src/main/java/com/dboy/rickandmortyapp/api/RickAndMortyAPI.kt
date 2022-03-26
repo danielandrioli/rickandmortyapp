@@ -12,7 +12,6 @@ interface RickAndMortyAPI {
     @GET("character/")
     suspend fun getCharacters(
         @Query("name") nameQuery: String = "",
-        @Query("status") status: String = "",   //empty means all status: dead, alive and unknown
         @Query("page") page: Int
     ): Response<CharactersResponse>
 

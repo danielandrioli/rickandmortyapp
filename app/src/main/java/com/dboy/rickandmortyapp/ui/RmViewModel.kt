@@ -13,19 +13,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RmViewModel @Inject constructor(private val repository: DefaultRepository) : ViewModel() {
-    private val query = MutableLiveData<CharacterQuery>()
+    val query = MutableLiveData<String>()
     val charactersWithPagination = query.switchMap {
-        repository.getCharactersWithPagination(it.name, it.status).cachedIn(viewModelScope)
+        repository.getCharactersWithPagination(it).cachedIn(viewModelScope)
     }
     private val _character: MutableLiveData<Resource<Character>> = MutableLiveData()
     val character: LiveData<Resource<Character>> = _character
 
     init {
-        query.value = CharacterQuery()
+        query.value = ""
     }
 
-    fun makeCharacterQuery(name: String, status: String = "") {
-        query.value = CharacterQuery(name, status)
+    fun makeCharacterQuery(name: String) {
+        query.value = name
     }
 
     fun getSingleCharacter(id: Int){

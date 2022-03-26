@@ -17,7 +17,6 @@ class DefaultRepository @Inject constructor(
 ) {
     fun getCharactersWithPagination(
         nameQuery: String = "",
-        statusQuery: String = ""
     ): LiveData<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
@@ -26,22 +25,22 @@ class DefaultRepository @Inject constructor(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                CharactersPagingSource(rmApi, nameQuery, statusQuery)
+                CharactersPagingSource(rmApi, nameQuery)
             }
         ).liveData
     }
 
     suspend fun getSingleCharacter(id: Int): Resource<Character> {
-        val response = rmApi.getSingleCharacter(id)
-        val result = response.body()
         return try {
+            val response = rmApi.getSingleCharacter(id)
+            val result = response.body()
             if(response.isSuccessful && result != null){
                 Resource.Success(result)
             } else {
                 Resource.Error(message = response.message(), result)
             }
         } catch (e: Exception) {
-            Resource.Error(e.message.toString(), result)
+            Resource.Error(e.message.toString())
         }
     }
 }
