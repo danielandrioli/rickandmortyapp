@@ -24,10 +24,13 @@ class CharactersPagingSource(
             if (response.isSuccessful && charactersResponse != null) {
                 Log.i("CharactersPaging", "successfull response: $response")
 
-                val nextPageNumber: Int?
-                val uri = Uri.parse(charactersResponse.info.next)
-                val nextPageQuery = uri.getQueryParameter("page")
-                nextPageNumber = nextPageQuery?.toInt()
+                val nextPageNumber: Int? = if (charactersResponse.info.next != null){
+                    val uri = Uri.parse(charactersResponse.info.next)
+                    val nextPageQuery = uri.getQueryParameter("page")
+                    nextPageQuery?.toInt()
+                } else {
+                    null
+                }
 
                 LoadResult.Page(
                     data = charactersResponse.results,

@@ -1,14 +1,13 @@
 package com.dboy.rickandmortyapp.ui.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import coil.load
 import com.dboy.rickandmortyapp.MainActivity
 import com.dboy.rickandmortyapp.R
@@ -18,12 +17,16 @@ import com.dboy.rickandmortyapp.ui.RmViewModel
 import com.dboy.rickandmortyapp.util.Resource
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class CharacterFragment: Fragment() {
+class CharacterFragment : Fragment() {
     private var binding: FragmentCharacterBinding? = null
     private val args: CharacterFragmentArgs by navArgs()
     private val characterId: Int by lazy { args.characterId }
     private val rmViewModel: RmViewModel by activityViewModels()
-    private val bottomNavigationView: BottomNavigationView by lazy { (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottomNavigationView) }
+    private val bottomNavigationView: BottomNavigationView by lazy {
+        (activity as MainActivity).findViewById<BottomNavigationView>(
+            R.id.bottomNavigationView
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,10 +39,9 @@ class CharacterFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bottomNavigationView.isVisible = false
-//        setHasOptionsMenu(true)  // I need to hide the search function
         rmViewModel.getSingleCharacter(characterId)
-        rmViewModel.character.observe(viewLifecycleOwner){
-            when(it){
+        rmViewModel.character.observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Success -> bindFieldsSuccess(it.data!!)
                 is Resource.Error -> bindFieldsError(true)
                 is Resource.Loading -> bindFieldsLoading()
@@ -52,7 +54,7 @@ class CharacterFragment: Fragment() {
         }
     }
 
-    private fun bindFieldsLoading(){
+    private fun bindFieldsLoading() {
         binding?.apply {
             pgCharacter.isVisible = true
             constraintCharacter.isVisible = false
@@ -60,7 +62,7 @@ class CharacterFragment: Fragment() {
         }
     }
 
-    private fun bindFieldsError(isError: Boolean){
+    private fun bindFieldsError(isError: Boolean) {
         binding?.apply {
             pgCharacter.isVisible = false
             linearLayoutCharacter.isVisible = isError
@@ -68,7 +70,7 @@ class CharacterFragment: Fragment() {
         }
     }
 
-    private fun bindFieldsSuccess(character: Character){
+    private fun bindFieldsSuccess(character: Character) {
         binding?.apply {
             ivCharacter.load(character.image)
             tvName.text = character.name
@@ -82,11 +84,10 @@ class CharacterFragment: Fragment() {
         (activity as MainActivity).supportActionBar?.title = character.name
     }
 
-
-
     override fun onDestroyView() {
         rmViewModel.setValueCharacterNull() //It's necessary to set the value of this liveData to null, otherwise
-        binding = null                  //the old data will flicker on the screen before the new data appears.
+        binding =
+            null                  //the old data will flicker on the screen before the new data appears.
         bottomNavigationView.isVisible = true
         super.onDestroyView()
     }

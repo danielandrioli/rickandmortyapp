@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/character_load_state_footer.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_character.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_characters.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/fragment_characters_list.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_characters_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_locations_list.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19375" />

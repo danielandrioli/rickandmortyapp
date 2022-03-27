@@ -4,17 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.CharactersListFragment">
+    tools:context=".ui.fragments.CharactersListFragment"
+    android:layout_margin="8dp">
+
+    <Button
+        android:id="@+id/btnFilter"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        app:icon="@drawable/ic_vertical_distribute"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textFieldSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldSearch"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Search a character..."
+        app:endIconDrawable="@drawable/ic_search"
+        app:endIconMode="custom"
+        app:layout_constraintEnd_toStartOf="@id/btnFilter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCharacterList"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/character_item"/>
+        app:layout_constraintTop_toBottomOf="@id/textFieldSearch"
+        tools:listitem="@layout/character_item" />
 
     <ProgressBar
         android:id="@+id/pgCharacters"
