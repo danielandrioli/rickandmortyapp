@@ -19,4 +19,12 @@ interface RickAndMortyAPI {
     suspend fun getSingleCharacter(
         @Path("id") id: Int
     ) : Response<Character>
+
+    @GET("character/")
+    suspend fun getFilteredCharacters(
+        @Query("name") nameQuery: String,
+        @Query("status") statusQuery: String,
+        @Query("gender") genderQuery: String,
+        @Query("page") page: Int
+    ): Response<CharactersResponse>
 }

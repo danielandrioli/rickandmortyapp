@@ -1,12 +1,10 @@
 package com.dboy.rickandmortyapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -50,6 +48,18 @@ class CharactersListFragment : Fragment() {
                 CharactersListFragmentDirections.actionCharactersListFragmentToCharacterFragment(it.id)
             findNavController().navigate(action)
         }
+
+        binding?.apply {
+            btnReset.setOnClickListener {
+                tieSearch.text?.clear()
+                rmViewModel.clearFilter()
+            }
+
+            btnFilter.setOnClickListener {
+                val action = CharactersListFragmentDirections.actionCharactersListFragmentToFilterFragment()
+                findNavController().navigate(action)
+            }
+        }
     }
 
     private fun setSearchInput() {
@@ -57,10 +67,13 @@ class CharactersListFragment : Fragment() {
         //I'm using this method doOnTextChanged because I can compare the current text to the query in the viewModel. I need to do this
         //because these text listeners are called whenever I return to this fragment, so they do unnecessary network calls.
         binding?.tieSearch?.doOnTextChanged { text, _, _, _ ->
-            if (text.toString() != rmViewModel.query.value) {
+            if (text.toString() != rmViewModel.nameQuery.value) {
                 job?.cancel()
                 job = MainScope().launch {
-                    delay(1000L)
+                    if (text != null) {
+                        if (text.isNotEmpty())  //I want to delay just when text is being written
+                            delay(1000L)
+                    }
                     text?.let {
                         rmViewModel.makeCharacterQuery(it.toString())
                     }

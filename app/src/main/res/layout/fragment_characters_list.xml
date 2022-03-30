@@ -7,15 +7,23 @@
     tools:context=".ui.fragments.CharactersListFragment"
     android:layout_margin="8dp">
 
-    <Button
+    <ImageButton
         android:id="@+id/btnFilter"
         android:layout_width="48dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_weight="1"
-        app:icon="@drawable/ic_vertical_distribute"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/textFieldSearch"
+        app:layout_constraintEnd_toStartOf="@id/btnReset"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_filter"
+        />
+
+    <ImageButton
+        android:id="@+id/btnReset"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_reload"
+        app:layout_constraintBottom_toBottomOf="@+id/btnFilter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

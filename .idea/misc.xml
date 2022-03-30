@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_filter.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_character.xml" value="0.1935" />
+        <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.1935" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1935" />
+        <entry key="app/src/main/res/drawable/ic_vertical_distribute.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/name_characterfragment_background.xml" value="0.1935" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/character_item.xml" value="0.25" />
@@ -12,6 +16,7 @@
         <entry key="app/src/main/res/layout/fragment_characters.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_characters_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_locations_list.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/search_function.xml" value="0.19375" />

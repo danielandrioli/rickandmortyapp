@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_charactersListFragment_to_characterFragment"
             app:destination="@id/characterFragment" />
+        <action
+            android:id="@+id/action_charactersListFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/characterFragment"
@@ -28,4 +31,8 @@
         android:name="com.dboy.rickandmortyapp.ui.fragments.LocationsListFragment"
         android:label="Locations"
         tools:layout="@layout/fragment_locations_list" />
+    <dialog
+        android:id="@+id/filterFragment"
+        android:name="com.dboy.rickandmortyapp.ui.fragments.FilterFragment"
+        tools:layout="@layout/fragment_filter" />
 </navigation>

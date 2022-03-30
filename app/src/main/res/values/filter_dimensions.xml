@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chip_text_size">16sp</dimen>
+    <dimen name="tv_chip_group_size">18sp</dimen>
+    <dimen name="fragment_title">22sp</dimen>
+</resources>
