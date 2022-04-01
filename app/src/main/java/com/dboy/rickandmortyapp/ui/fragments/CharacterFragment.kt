@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.dboy.rickandmortyapp.MainActivity
 import com.dboy.rickandmortyapp.R
-import com.dboy.rickandmortyapp.api.response.Character
+import com.dboy.rickandmortyapp.api.response.character.Character
 import com.dboy.rickandmortyapp.databinding.FragmentCharacterBinding
 import com.dboy.rickandmortyapp.ui.RmViewModel
 import com.dboy.rickandmortyapp.util.Resource
@@ -79,6 +79,7 @@ class CharacterFragment : Fragment() {
             tvSpecies.text = character.species
             tvLastLocation.text = character.location.name
             pgCharacter.isVisible = false
+            tvNumberOfEpisodes.text = character.episode.size.toString()
         }
         bindFieldsError(false)
         (activity as MainActivity).supportActionBar?.title = character.name

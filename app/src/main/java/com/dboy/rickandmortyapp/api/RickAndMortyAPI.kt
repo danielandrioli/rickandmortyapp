@@ -1,7 +1,8 @@
 package com.dboy.rickandmortyapp.api
 
-import com.dboy.rickandmortyapp.api.response.Character
-import com.dboy.rickandmortyapp.api.response.CharactersResponse
+import com.dboy.rickandmortyapp.api.response.character.Character
+import com.dboy.rickandmortyapp.api.response.character.CharactersResponse
+import com.dboy.rickandmortyapp.api.response.episode.EpisodeResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,4 +28,9 @@ interface RickAndMortyAPI {
         @Query("gender") genderQuery: String,
         @Query("page") page: Int
     ): Response<CharactersResponse>
+
+    @GET("episode/")
+    suspend fun getEpisodes(
+        @Query("page") page: Int
+    ): Response<EpisodeResponse>
 }

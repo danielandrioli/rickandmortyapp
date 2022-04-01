@@ -1,4 +1,4 @@
-package com.dboy.rickandmortyapp.api.response
+package com.dboy.rickandmortyapp.api.response.character
 
 data class Character(
     val created: String,

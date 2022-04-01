@@ -123,8 +123,29 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleNumberOfEpisodes" />
+
+        <TextView
+            android:id="@+id/tvTitleNumberOfEpisodes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Episodes appeared: "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleStatus" />
 
+        <TextView
+            android:id="@+id/tvNumberOfEpisodes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/tvTitleNumberOfEpisodes"
+            app:layout_constraintTop_toTopOf="@id/tvTitleNumberOfEpisodes"
+            tools:text="42" />
         <TextView
             android:id="@+id/tvSpecies"
             android:layout_width="wrap_content"

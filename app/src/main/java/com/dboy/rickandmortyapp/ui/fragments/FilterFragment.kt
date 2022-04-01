@@ -12,7 +12,6 @@ import com.dboy.rickandmortyapp.databinding.FragmentFilterBinding
 import com.dboy.rickandmortyapp.ui.RmViewModel
 import com.dboy.rickandmortyapp.util.getTextFromCheckedId
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.chip.Chip
 
 class FilterFragment : BottomSheetDialogFragment() {
     private var binding: FragmentFilterBinding? = null
@@ -58,10 +57,6 @@ class FilterFragment : BottomSheetDialogFragment() {
 
             btnApply.setOnClickListener {
                 Log.i("FilterFragment", cgStatus.getTextFromCheckedId())
-//                if (cgStatus.getTextFromCheckedId().isNotEmpty() || cgGender.getTextFromCheckedId()
-//                        .isNotEmpty()
-//                ) {
-//                }
                 rmViewModel.makeFilteredQuery(
                     status = cgStatus.getTextFromCheckedId(),
                     gender = cgGender.getTextFromCheckedId()

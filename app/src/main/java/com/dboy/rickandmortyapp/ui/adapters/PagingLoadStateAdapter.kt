@@ -6,11 +6,13 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dboy.rickandmortyapp.databinding.CharacterLoadStateFooterBinding
+import com.dboy.rickandmortyapp.databinding.LoadStateFooterBinding
 
-class CharacterLoadStateAdapter(private val retry: () -> Unit): LoadStateAdapter<CharacterLoadStateAdapter.LoadStateViewHolder>() {
+class PagingLoadStateAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<PagingLoadStateAdapter.LoadStateViewHolder>() {
 
-    inner class LoadStateViewHolder(val binding: CharacterLoadStateFooterBinding): RecyclerView.ViewHolder(binding.root){
+    inner class LoadStateViewHolder(val binding: LoadStateFooterBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.btnRetry.setOnClickListener {
                 retry()
@@ -19,7 +21,8 @@ class CharacterLoadStateAdapter(private val retry: () -> Unit): LoadStateAdapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
-        val binding = CharacterLoadStateFooterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            LoadStateFooterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return LoadStateViewHolder(binding)
     }
 

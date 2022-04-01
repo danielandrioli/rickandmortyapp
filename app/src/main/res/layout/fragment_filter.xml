@@ -118,6 +118,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="14dp"
             android:text="Apply"
+            android:backgroundTint="@color/primary"
             android:textSize="20sp" />
     </LinearLayout>
 

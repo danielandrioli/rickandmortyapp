@@ -39,11 +39,22 @@
             app:layout_constraintWidth_percent="0.3" />
 
         <TextView
+            android:id="@+id/tvDotSituation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="•"
+            android:layout_marginStart="@dimen/itens_margin"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSituation"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toTopOf="@+id/tvSituation" />
+
+        <TextView
             android:id="@+id/tvSituation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/itens_margin"
-            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintStart_toEndOf="@+id/tvDotSituation"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
             tools:text="Alive" />
 

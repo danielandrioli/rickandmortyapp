@@ -3,8 +3,8 @@ package com.dboy.rickandmortyapp.paging
 import android.net.Uri
 import android.util.Log
 import androidx.paging.PagingSource
-import com.dboy.rickandmortyapp.api.response.Character
-import com.dboy.rickandmortyapp.api.response.CharactersResponse
+import com.dboy.rickandmortyapp.api.response.character.Character
+import com.dboy.rickandmortyapp.api.response.character.CharactersResponse
 import okio.IOException
 import retrofit2.HttpException
 import retrofit2.Response

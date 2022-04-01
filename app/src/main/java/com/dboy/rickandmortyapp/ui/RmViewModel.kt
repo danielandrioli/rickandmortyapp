@@ -2,8 +2,10 @@ package com.dboy.rickandmortyapp.ui
 
 import android.util.Log
 import androidx.lifecycle.*
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.dboy.rickandmortyapp.api.response.Character
+import com.dboy.rickandmortyapp.api.response.character.Character
+import com.dboy.rickandmortyapp.api.response.episode.Episode
 import com.dboy.rickandmortyapp.repository.DefaultRepository
 import com.dboy.rickandmortyapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,15 +32,16 @@ class RmViewModel @Inject constructor(private val repository: DefaultRepository)
     val character: LiveData<Resource<Character>> = _character
     val filterGender: MutableLiveData<String> = MutableLiveData("")
     val filterStatus: MutableLiveData<String> = MutableLiveData("")
+    val episodesWithPagination = repository.getEpisodesWithPagination().cachedIn(viewModelScope)
 
     fun makeFilteredQuery(status: String, gender: String) {
         filterStatus.value = status
         filterGender.value = gender
-        nameQuery.value = nameQuery.value //this way, the switchMap is gonna activate and the request is gonna be made
+        nameQuery.value =
+            nameQuery.value //this way, the switchMap is gonna activate and the request is gonna be made
     }
 
     fun clearFilter() {
-//        isFiltered.value = false
         filterGender.value = ""
         filterStatus.value = ""
     }
@@ -58,4 +61,6 @@ class RmViewModel @Inject constructor(private val repository: DefaultRepository)
     fun setValueCharacterNull() {
         _character.value = null
     }
+
+
 }

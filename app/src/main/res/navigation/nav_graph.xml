@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/locationsListFragment"
-        android:name="com.dboy.rickandmortyapp.ui.fragments.LocationsListFragment"
+        android:name="com.dboy.rickandmortyapp.ui.fragments.EpisodesListFragment"
         android:label="Locations"
-        tools:layout="@layout/fragment_locations_list" />
+        tools:layout="@layout/fragment_episodes_list" />
     <dialog
         android:id="@+id/filterFragment"
         android:name="com.dboy.rickandmortyapp.ui.fragments.FilterFragment"

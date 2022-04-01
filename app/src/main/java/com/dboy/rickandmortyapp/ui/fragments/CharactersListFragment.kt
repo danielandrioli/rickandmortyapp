@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dboy.rickandmortyapp.databinding.FragmentCharactersListBinding
 import com.dboy.rickandmortyapp.ui.RmViewModel
 import com.dboy.rickandmortyapp.ui.adapters.CharacterAdapterPagination
-import com.dboy.rickandmortyapp.ui.adapters.CharacterLoadStateAdapter
+import com.dboy.rickandmortyapp.ui.adapters.PagingLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -51,12 +51,17 @@ class CharactersListFragment : Fragment() {
 
         binding?.apply {
             btnReset.setOnClickListener {
-                tieSearch.text?.clear()
                 rmViewModel.clearFilter()
+                if(tieSearch.text?.isNotEmpty() == true){ // == true just to avoid creating a new if to null-check
+                    tieSearch.text?.clear() //this is enough to clear the name query and make a new search with all characters
+                } else {
+                    rmViewModel.nameQuery.value = "" //this will automatically generate a new request
+                }
             }
 
             btnFilter.setOnClickListener {
-                val action = CharactersListFragmentDirections.actionCharactersListFragmentToFilterFragment()
+                val action =
+                    CharactersListFragmentDirections.actionCharactersListFragmentToFilterFragment()
                 findNavController().navigate(action)
             }
         }
@@ -85,7 +90,7 @@ class CharactersListFragment : Fragment() {
     private fun setRecyclerAndAdapter() {
         characterAdapter = CharacterAdapterPagination()
         binding?.rvCharacterList?.apply {
-            adapter = characterAdapter.withLoadStateFooter(CharacterLoadStateAdapter {
+            adapter = characterAdapter.withLoadStateFooter(PagingLoadStateAdapter {
                 characterAdapter.retry()
             })
             layoutManager = LinearLayoutManager(requireContext())
@@ -97,8 +102,11 @@ class CharactersListFragment : Fragment() {
                 val loadState = it.source.refresh
                 pgCharacters.isVisible = loadState is LoadState.Loading
                 btnRetry.isVisible = loadState is LoadState.Error
-                tvError.isVisible = loadState is LoadState.Error
                 rvCharacterList.isVisible = loadState is LoadState.NotLoading
+                tvError.isVisible = loadState is LoadState.Error
+                tvError.text =
+                    if (loadState is LoadState.Error && loadState.error.message == "404") "Could not find the character!"
+                    else "Could not load data!"
             }
         }
 

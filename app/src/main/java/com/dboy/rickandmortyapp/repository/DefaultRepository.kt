@@ -6,8 +6,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.dboy.rickandmortyapp.api.RickAndMortyAPI
-import com.dboy.rickandmortyapp.api.response.Character
+import com.dboy.rickandmortyapp.api.response.character.Character
+import com.dboy.rickandmortyapp.api.response.episode.Episode
 import com.dboy.rickandmortyapp.paging.CharactersPagingSource
+import com.dboy.rickandmortyapp.paging.EpisodesPagingSource
 import com.dboy.rickandmortyapp.paging.FilterCharactersPagingSource
 import com.dboy.rickandmortyapp.util.Resource
 import javax.inject.Inject
@@ -40,7 +42,7 @@ class DefaultRepository @Inject constructor(
                 pageSize = 20, prefetchDistance = 4, enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                FilterCharactersPagingSource(rmApi, nameQuery, statusQuery, genderQuery)
+                FilterCharactersPagingSource(rmApi, nameQuery, statusQuery, genderQuery)  //não instanciar. Obter o objeto através de injeção de dependencia!
             }
         ).liveData
     }
@@ -57,5 +59,16 @@ class DefaultRepository @Inject constructor(
         } catch (e: Exception) {
             Resource.Error(e.message.toString())
         }
+    }
+
+    fun getEpisodesWithPagination(): LiveData<PagingData<Episode>>{
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20, prefetchDistance = 4, enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                EpisodesPagingSource(rmApi)
+            }
+        ).liveData
     }
 }

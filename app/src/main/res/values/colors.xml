@@ -8,7 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="character_name">#DD4617</color>
-    <color name="background">#FFFFFFFF</color>
+    <color name="background">#B0BFBA</color>
     <color name="light_gray_filter">#D791999F</color>
     <color name="light_gray">#91999F</color>
+    <color name="alive">#44B517</color>
+    <color name="dead">#E41818</color>
+    <color name="unknown">#494A4A</color>
+    <color name="dark_primary">#1976D2</color>
+    <color name="light_primary">#BBDEFB</color>
+    <color name="primary">#2196F3</color>
+
 </resources>

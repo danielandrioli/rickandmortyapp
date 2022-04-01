@@ -3,7 +3,7 @@ package com.dboy.rickandmortyapp.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.dboy.rickandmortyapp.api.RickAndMortyAPI
-import com.dboy.rickandmortyapp.api.response.Character
+import com.dboy.rickandmortyapp.api.response.character.Character
 import com.dboy.rickandmortyapp.util.CHARACTERS_STARTING_PAGE
 
 class CharactersPagingSource(
