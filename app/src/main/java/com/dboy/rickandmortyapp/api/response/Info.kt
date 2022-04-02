@@ -1,4 +1,4 @@
-package com.dboy.rickandmortyapp.api.response.episode
+package com.dboy.rickandmortyapp.api.response
 
 data class Info(
     val count: Int,

@@ -42,7 +42,7 @@ class DefaultRepository @Inject constructor(
                 pageSize = 20, prefetchDistance = 4, enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                FilterCharactersPagingSource(rmApi, nameQuery, statusQuery, genderQuery)  //não instanciar. Obter o objeto através de injeção de dependencia!
+                FilterCharactersPagingSource(rmApi, nameQuery, statusQuery, genderQuery)
             }
         ).liveData
     }
