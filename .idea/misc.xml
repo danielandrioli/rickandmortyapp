@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/background_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/background_filter.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_character.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.1935" />
+        <entry key="app/src/main/res/drawable/ic_locations.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_vertical_distribute.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/name_characterfragment_background.xml" value="0.1935" />
@@ -23,6 +25,7 @@
         <entry key="app/src/main/res/layout/fragment_locations_list.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/search_function.xml" value="0.19375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
