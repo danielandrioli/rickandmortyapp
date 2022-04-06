@@ -27,5 +27,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesNewsApi(retrofit: Retrofit): RickAndMortyAPI = retrofit.create(RickAndMortyAPI::class.java)
+    fun providesNewsApi(retrofit: Retrofit): RickAndMortyAPI =
+        retrofit.create(RickAndMortyAPI::class.java)
 }

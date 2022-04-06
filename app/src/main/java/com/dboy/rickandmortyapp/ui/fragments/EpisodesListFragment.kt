@@ -11,10 +11,10 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dboy.rickandmortyapp.databinding.FragmentEpisodesListBinding
 import com.dboy.rickandmortyapp.ui.RmViewModel
-import com.dboy.rickandmortyapp.ui.adapters.PagingLoadStateAdapter
 import com.dboy.rickandmortyapp.ui.adapters.EpisodesAdapterPagination
+import com.dboy.rickandmortyapp.ui.adapters.PagingLoadStateAdapter
 
-class EpisodesListFragment: Fragment() {
+class EpisodesListFragment : Fragment() {
     private var binding: FragmentEpisodesListBinding? = null
     private lateinit var episodesAdapter: EpisodesAdapterPagination
     private val rmViewModel: RmViewModel by activityViewModels()
@@ -30,15 +30,15 @@ class EpisodesListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setRecyclerViewAndAdapter()
-        rmViewModel.episodesWithPagination.observe(viewLifecycleOwner){
+        rmViewModel.episodesWithPagination.observe(viewLifecycleOwner) {
             episodesAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }
 
-    private fun setRecyclerViewAndAdapter(){
+    private fun setRecyclerViewAndAdapter() {
         episodesAdapter = EpisodesAdapterPagination()
         binding?.rvEpisodes?.apply {
-            adapter = episodesAdapter.withLoadStateFooter(PagingLoadStateAdapter{
+            adapter = episodesAdapter.withLoadStateFooter(PagingLoadStateAdapter {
                 episodesAdapter.retry()
             })
             layoutManager = LinearLayoutManager(requireContext())

@@ -2,10 +2,8 @@ package com.dboy.rickandmortyapp.ui
 
 import android.util.Log
 import androidx.lifecycle.*
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.dboy.rickandmortyapp.api.response.character.Character
-import com.dboy.rickandmortyapp.api.response.episode.Episode
 import com.dboy.rickandmortyapp.repository.DefaultRepository
 import com.dboy.rickandmortyapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

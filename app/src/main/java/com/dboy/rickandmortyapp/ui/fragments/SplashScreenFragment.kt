@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashScreenFragment: Fragment() {
+class SplashScreenFragment : Fragment() {
     var binding: FragmentSplashScreenBinding? = null
 
 
@@ -30,7 +30,8 @@ class SplashScreenFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val supportActionBar = (activity as MainActivity).supportActionBar
-        val bottomNavigationView = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val bottomNavigationView =
+            (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         lifecycleScope.launch {
             supportActionBar?.hide()

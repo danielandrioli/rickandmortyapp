@@ -61,7 +61,7 @@ class DefaultRepository @Inject constructor(
         }
     }
 
-    fun getEpisodesWithPagination(): LiveData<PagingData<Episode>>{
+    fun getEpisodesWithPagination(): LiveData<PagingData<Episode>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 20, prefetchDistance = 4, enablePlaceholders = false
